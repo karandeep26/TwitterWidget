@@ -33,7 +33,7 @@ public class Country implements Serializable {
         return cities;
     }
 
-   static public class City
+   static public class City implements Serializable
     {
         String cityName;
         int woeid;
@@ -42,9 +42,6 @@ public class Country implements Serializable {
             this.cityName = cityName;
             this.woeid = woeid;
         }
-
-
-
         public String getCityName() {
             return cityName;
         }
