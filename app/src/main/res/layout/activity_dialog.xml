@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_dialog"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#263238"
+
+    tools:context="com.karan.twitterwidget.Activity.DialogActivity">
+    <LinearLayout
+        android:background="#37474F"
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#fff"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:text="Settings"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:background="#263238"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <TextView
+        android:textColor="#fff"
+        android:layout_marginLeft="5dp"
+        android:padding="10dp"
+
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+
+        android:id="@+id/country"
+        android:text="Select Country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Spinner
+        android:paddingRight="10dp"
+        android:popupBackground="#263238"
+        android:background="#263238"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/country_spinner" />
+    <TextView
+        android:textColor="#fff"
+        android:layout_marginTop="5dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+        android:layout_marginLeft="5dp"
+        android:padding="10dp"
+        android:layout_below="@+id/country_spinner"
+        android:id="@+id/city"
+        android:text="Select city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Spinner
+        android:paddingRight="10dp"
+        android:popupBackground="#90A4AE"
+        android:background="#263238"
+        android:paddingLeft="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/city"
+        android:id="@+id/city_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+        <Button
+            android:textColor="#fff"
+
+            android:layout_margin="10dp"
+            android:text="Done"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/city_spinner"
+            android:id="@+id/done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+</RelativeLayout>
+
+</RelativeLayout>

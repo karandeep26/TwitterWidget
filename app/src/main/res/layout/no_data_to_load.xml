@@ -13,16 +13,16 @@
             android:paddingBottom="5dp"
             android:textColor="#fff"
             android:textSize="20sp"
-            android:id="@+id/title" android:layout_width="wrap_content"
+            android:id="@+id/fact" android:layout_width="wrap_content"
             android:text="#Trending"
-            android:singleLine="true"
             android:ellipsize="marquee"
             android:marqueeRepeatLimit ="marquee_forever"
             android:scrollHorizontally="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:duplicateParentState="true"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:maxLines="1">
             <requestFocus android:focusable="true" android:focusableInTouchMode="true"
                 android:duplicateParentState="true" />
         </TextView>
@@ -55,10 +55,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/widget_list"
+        <TextView
+            android:textSize="12sp"
+            android:layout_below="@id/more"
+            android:layout_centerInParent="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="5dp"
+            android:textColor="#fff"
+            android:text="Please connect to Internet &amp; press refresh"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
+
     </LinearLayout>
 
 </LinearLayout>

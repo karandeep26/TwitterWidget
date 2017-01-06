@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Twitter Widget</string>
+    <string name="vertical_ellipsis">&#8942;</string>
+
 </resources>
