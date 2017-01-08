@@ -82,7 +82,7 @@
         <Button
             android:textColor="#fff"
             android:text="Done"
-            android:background="?android:selectableItemBackground"
+            android:background="?android:attr/selectableItemBackground"
             android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

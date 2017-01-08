@@ -48,10 +48,14 @@ public class LoadPlaces extends AsyncTask<Void,Void,Void> {
             Utility.getTwitterInstance().setOAuthAccessToken(accessToken);
             ResponseList<Location> locationResponseList = Utility.getTwitterInstance().getAvailableTrends();
             for (Location location : locationResponseList) {
+                if(location.getWoeid()==1){
+                    Utility.countryList.add(new Country("World",location.getWoeid()));
+                }
                 if (location.getPlaceName() != null) {
                     if (location.getPlaceName().equalsIgnoreCase("town")) {
                         if (!cityMap.containsKey(location.getCountryCode())) {
                             ArrayList<Country.City> cityArrayList = new ArrayList<>();
+                            cityArrayList.add(new Country.City("ALL",-1));
                             cityArrayList.add(new Country.City(location.getName(), location.getWoeid()));
                             cityMap.put(location.getCountryCode(), cityArrayList);
                         } else {
@@ -64,6 +68,9 @@ public class LoadPlaces extends AsyncTask<Void,Void,Void> {
                         country.setCities(cityMap.get(location.getCountryCode()));
                         Utility.countryList.add(country);
                     }
+                }
+                else{
+                    Utility.countryList.add(new Country("WORLD",location.getWoeid()));
                 }
             }
         } catch (TwitterException e) {

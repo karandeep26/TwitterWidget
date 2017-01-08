@@ -92,14 +92,17 @@ public class DialogActivity extends Activity {
 
     }
     public int getWoeid(){
-        if(Utility.countryList.get(countryid).getCities()==null){
+        if(Utility.countryList.get(countryid).getCities()==null||Utility.countryList.get(countryid).getCities().
+                get(cityId).getWoeid()==-1){
             return Utility.countryList.get(countryid).getWoeid();
         }
+
         return Utility.countryList.get(countryid).getCities().get(cityId).getWoeid();
 
     }
    public String getName(){
-       if(Utility.countryList.get(countryid).getCities()==null){
+       if(Utility.countryList.get(countryid).getCities()==null||Utility.countryList.get(countryid).
+               getCities().get(cityId).getWoeid()==-1){
            return Utility.countryList.get(countryid).getCountryName();
        }
         return Utility.countryList.get(countryid).getCities().get(cityId).getCityName();}

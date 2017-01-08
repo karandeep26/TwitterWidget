@@ -20,8 +20,6 @@ import twitter4j.ResponseList;
 public class MyWebViewClient extends WebViewClient{
     private WebViewActivity activity;
     private HashMap<String, ArrayList<Country.City>> map = new HashMap<>();
-    private ArrayList<Country> countries = new ArrayList<>();
-    ResponseList<Location> list = null;
 
 
     public MyWebViewClient(WebViewActivity webViewActivity)
@@ -35,7 +33,6 @@ public class MyWebViewClient extends WebViewClient{
             return false;
         Utility.oauthVerifier= Uri.parse(url).getQueryParameter("oauth_verifier");
         new LoadPlaces(activity).execute();
-//        activity.loadPlaces();
         return true;
     }
 }

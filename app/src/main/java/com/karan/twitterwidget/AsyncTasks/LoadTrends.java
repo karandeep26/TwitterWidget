@@ -24,7 +24,6 @@ import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
 
 /**
- * Created by stpl on 12/29/2016.
  */
 
 public class LoadTrends extends AsyncTask<Void,Void,Void> {
