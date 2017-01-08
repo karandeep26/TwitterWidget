@@ -1,64 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_gravity="center"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37474F">
+    android:layout_gravity="center"
+    android:background="#37474F"
+    android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
-            android:paddingLeft="10dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:textColor="#fff"
-            android:textSize="20sp"
-            android:id="@+id/title" android:layout_width="wrap_content"
-            android:text="#Trending"
-            android:singleLine="true"
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="true"
             android:ellipsize="marquee"
-            android:marqueeRepeatLimit ="marquee_forever"
-            android:scrollHorizontally="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:duplicateParentState="true"
-            android:layout_height="wrap_content">
-            <requestFocus android:focusable="true" android:focusableInTouchMode="true"
-                android:duplicateParentState="true" />
-        </TextView>
-        <ImageButton
-            android:paddingTop="5dp"
+            android:marqueeRepeatLimit="marquee_forever"
             android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:src="@drawable/ic_settings_white_24dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:scrollHorizontally="true"
+            android:text="#Trending"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:maxLines="1">
+
+            <requestFocus
+                android:duplicateParentState="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+        </TextView>
+
+        <ImageButton
             android:id="@+id/more"
-            android:layout_alignParentRight="true"
-            android:background="#37474F"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="?android:selectableItemBackground"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:src="@drawable/ic_settings_white_24dp" />
+
         <ImageButton
             android:id="@+id/refresh"
-            android:src="@drawable/ic_refresh_white_24dp"
-            android:background="#37474F"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
-            android:paddingBottom="5dp"
-            android:layout_toLeftOf="@id/more"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/more"
+            android:background="#37474F"
+            android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:src="@drawable/ic_refresh_white_24dp" />
 
 
     </RelativeLayout>
+
     <LinearLayout
-        android:orientation="vertical"
-        android:background="#263238"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#263238"
+        android:orientation="vertical">
 
         <ListView
             android:id="@+id/widget_list"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>

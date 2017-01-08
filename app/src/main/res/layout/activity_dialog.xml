@@ -72,18 +72,21 @@
         android:id="@+id/city_spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-        <Button
-            android:textColor="#fff"
-
+        <FrameLayout
             android:layout_margin="10dp"
-            android:text="Done"
             android:layout_centerInParent="true"
             android:layout_below="@id/city_spinner"
+            android:background="#2196F3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <Button
+            android:textColor="#fff"
+            android:text="Done"
+            android:background="?android:selectableItemBackground"
             android:id="@+id/done"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-
+        </FrameLayout>
 </RelativeLayout>
 
 </RelativeLayout>

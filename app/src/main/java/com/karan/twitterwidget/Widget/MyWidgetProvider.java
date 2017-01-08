@@ -34,7 +34,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
         int WOEID=-1;
 
         views = new RemoteViews(context.getPackageName(), R.layout.login_widget);
-        if(Utility.getSharedPreferences(context).getBoolean(Utility.PREF_KEY_TWITTER_LOGIN,false)){
+        if(Utility.isTwitterLoggedIn(context)){
             views=new RemoteViews(context.getPackageName(),R.layout.logged_in_layout);
             views.setOnClickPendingIntent(R.id.more, getPendingSelfIntent(context, "more" + appWidgetId, WOEID,"null"));
         }
@@ -42,7 +42,6 @@ public class MyWidgetProvider extends AppWidgetProvider {
             views=new RemoteViews(context.getPackageName(),R.layout.login_widget);
             views.setOnClickPendingIntent(R.id.login, getPendingSelfIntent(context, "on login" + appWidgetId, WOEID,"null"));
         }
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
             setRemoteAdapter(context, views, appWidgetId,0,"null");
@@ -52,14 +51,15 @@ public class MyWidgetProvider extends AppWidgetProvider {
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
-
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
+        String cityName=null;
         String action = intent.getAction();
         ConnectionDetector connectionDetector=new ConnectionDetector(context);
         int WOEID=intent.getIntExtra("WOEID",-1);
-        String cityName=intent.getExtras().getString("cityName","null");
+        if(intent.hasExtra("cityName"))
+            cityName=intent.getExtras().getString("cityName","null");
         if (action.startsWith("on login")) {
             onLogin(connectionDetector,action,context,WOEID);
           } else if (action.startsWith("load trends")) {
@@ -72,9 +72,13 @@ public class MyWidgetProvider extends AppWidgetProvider {
             onListViewItemClick(intent,context);
         } else if (action.startsWith("refresh")) {
             refreshList(connectionDetector,context,action,WOEID,cityName);
-        }
-        else if(action.startsWith("noData")){
+        } else if(action.startsWith("noData")){
             noDataToShow(context,action,WOEID,cityName,intent);
+        }
+        else if(action.startsWith("loading")){
+            widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
+            RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.loading_layout);
+            AppWidgetManager.getInstance(context).updateAppWidget(widgetID, views);
         }
     }
 
@@ -116,11 +120,11 @@ public class MyWidgetProvider extends AppWidgetProvider {
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.loading_layout);
         AppWidgetManager.getInstance(context).updateAppWidget(widgetID, views);
-        Intent alertDialog = new Intent(context, WebViewActivity.class);
-        alertDialog.putExtra("WidgetId", widgetID);
-        alertDialog.putExtra("WOEID", WOEID);
-        alertDialog.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(alertDialog);
+        Intent webViewActivity = new Intent(context, WebViewActivity.class);
+        webViewActivity.putExtra("WidgetId", widgetID);
+        webViewActivity.putExtra("WOEID", WOEID);
+        webViewActivity.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(webViewActivity);
     }
     private void loadTrends(String action,Context context,int WOEID,String cityName){
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
@@ -187,18 +191,17 @@ public class MyWidgetProvider extends AppWidgetProvider {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.loading_layout);
         AppWidgetManager.getInstance(context).updateAppWidget(widgetID, views);
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
-        Log.d("WOEID","***"+WOEID);
         new LoadTrends(context, WOEID, widgetID, cityName).execute();
 
     }
     private void noDataToShow(Context context,String action,int WOEID,String cityName,Intent intent){
-        Log.d("no data to show","true");
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
         RemoteViews views=new RemoteViews(context.getPackageName(),R.layout.no_data_to_load);
         views.setOnClickPendingIntent(R.id.more,getPendingSelfIntent(context,"more"+widgetID,WOEID,intent.getStringExtra("cityName")));
         views.setOnClickPendingIntent(R.id.refresh,getPendingSelfIntent(context,"refresh"+widgetID,WOEID,cityName));
         AppWidgetManager.getInstance(context).updateAppWidget(widgetID,views);
     }
+
 
 
 

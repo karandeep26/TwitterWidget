@@ -7,9 +7,16 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.karan.twitterwidget.Activity.WebViewActivity;
+import com.karan.twitterwidget.Model.Countries;
 import com.karan.twitterwidget.Model.Country;
+
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Func0;
+import twitter4j.Location;
+import twitter4j.ResponseList;
 import twitter4j.Twitter;
+import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.auth.AccessToken;
 import twitter4j.auth.RequestToken;
@@ -35,7 +42,6 @@ public class Utility {
     static public HashMap<Integer,ArrayList<String>> dataOfWidget = new HashMap<>();
     static public ArrayList<Country> countryList=new ArrayList<>();
     static public SharedPreferences sharedPreferences;
-
     static private Configuration buildConfiguration()
     {
         if(configuration==null)
@@ -60,9 +66,8 @@ public class Utility {
     }
     static public boolean isTwitterLoggedIn(Context context)
     {
-       if(sharedPreferences==null)
-           sharedPreferences=getSharedPreferences(context);
-        return sharedPreferences.getBoolean(PREF_KEY_TWITTER_LOGIN,false);
+
+        return getSharedPreferences(context).getBoolean(PREF_KEY_TWITTER_LOGIN,false);
     }
     static public SharedPreferences getSharedPreferences(Context context)
     {
@@ -70,6 +75,11 @@ public class Utility {
         sharedPreferences=context.getSharedPreferences("MyPref",0);
         return sharedPreferences;
     }
+    static public Observable countriesObservable(){
+        return Observable.defer(() -> {
 
+            return null;
+        });
+    }
 
 }

@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#37474F">
+    android:background="#263238"
+    android:orientation="vertical">
+
     <RelativeLayout
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    <TextView
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:id="@+id/fact" android:layout_width="wrap_content"
-        android:text="#Trending"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:ellipsize="marquee"
-        android:marqueeRepeatLimit ="marquee_forever"
-        android:scrollHorizontally="true"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:duplicateParentState="true"
-        android:layout_height="wrap_content">
-        <requestFocus android:focusable="true" android:focusableInTouchMode="true"
-            android:duplicateParentState="true" />
-    </TextView>
+        android:layout_height="wrap_content"
+        android:background="#37474F">
 
-    </RelativeLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:background="#263238"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
         <TextView
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:paddingTop="5dp"
+            android:id="@+id/fact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:duplicateParentState="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:maxLines="1"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:scrollHorizontally="true"
+            android:text="#Trending"
             android:textColor="#fff"
-            android:text="Please Login to continue"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp">
 
-        <Button
-            android:background="@drawable/login"
-            android:layout_gravity="center"
-            android:id="@+id/login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+            <requestFocus
+                android:duplicateParentState="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+        </TextView>
+
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:background="#2196F3"
+        android:layout_height="wrap_content">
+    <Button
+        android:background="?android:attr/selectableItemBackground"
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="#fff"
+         />
+    </FrameLayout>
+</RelativeLayout>
 

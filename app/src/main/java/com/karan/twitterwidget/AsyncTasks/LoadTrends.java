@@ -38,15 +38,14 @@ public class LoadTrends extends AsyncTask<Void,Void,Void> {
         this.widgetId=widgetId;
         cityName=name;
     }
+
     @Override
     protected Void doInBackground(Void... params) {
         try {
-            Log.d("Load trends called","true");
             Utility.twitter=Utility.getTwitterInstance();
             Utility.accessToken = new AccessToken(Utility.getSharedPreferences(context).getString(Utility.PREF_KEY_OAUTH_TOKEN, null), Utility.getSharedPreferences(context).getString(Utility.PREF_KEY_OAUTH_SECRET, null));
             Utility.twitter.setOAuthAccessToken(Utility.accessToken);
             Trends trends= Utility.twitter.getPlaceTrends(woeid);
-            Log.d("WOEID",woeid+"");
             Trend trend[]=trends.getTrends();
             list=new ArrayList<>();
             for(Trend temp:trend){
@@ -60,7 +59,7 @@ public class LoadTrends extends AsyncTask<Void,Void,Void> {
 
     @Override
     protected void onPostExecute(Void aVoid) {
-        Utility.dataOfWidget.put(widgetId,list);
+        Utility.dataOfWidget.put(widgetId,new ArrayList<>(list));
         try {
             FileOutputStream outputStream=context.openFileOutput(widgetId+"list",Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream=new ObjectOutputStream(outputStream);
@@ -73,7 +72,6 @@ public class LoadTrends extends AsyncTask<Void,Void,Void> {
         intent.setAction("load trends"+widgetId);
         intent.putExtra("WOEID",woeid);
         intent.putExtra("cityName",cityName);
-        Log.d("Dialog activity-Id",widgetId+"");
         context.sendBroadcast(intent);
         if(context instanceof DialogActivity)
         ((DialogActivity)context).finish();
