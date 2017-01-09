@@ -31,7 +31,7 @@ import static com.karan.twitterwidget.Utility.requestToken;
  * Created by karan on 8/1/17.
  */
 
-public class LoadPlaces extends AsyncTask<Void,Void,Void> {
+public class LoadPlaces extends AsyncTask<Void,Void,Boolean> {
     private Context context;
 
     public LoadPlaces(Context context) {
@@ -39,8 +39,9 @@ public class LoadPlaces extends AsyncTask<Void,Void,Void> {
     }
 
     @Override
-    protected Void doInBackground(Void... params) {
+    protected Boolean doInBackground(Void... params) {
         HashMap<String, ArrayList<Country.City>> cityMap = new HashMap<>();
+        Boolean error=false;
         try {
             accessToken = new AccessToken(requestToken.getToken(), requestToken.getTokenSecret());
             accessToken = Utility.getTwitterInstance().getOAuthAccessToken(requestToken, Utility.oauthVerifier);
@@ -74,31 +75,35 @@ public class LoadPlaces extends AsyncTask<Void,Void,Void> {
                 }
             }
         } catch (TwitterException e) {
-            e.printStackTrace();
+            error=true;
         }
-        return null;
+        return error;
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        Countries countries = new Countries(Utility.countryList);
-        try {
-            FileOutputStream fileOutput = context.openFileOutput("Locations", Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-            objectOutput.writeObject(countries);
-            objectOutput.close();
-            fileOutput.close();
-            SharedPreferences.Editor editor=Utility.getSharedPreferences(context).edit();
-            editor.putString(Utility.PREF_KEY_OAUTH_SECRET,Utility.accessToken.getTokenSecret());
-            editor.putString(Utility.PREF_KEY_OAUTH_TOKEN,Utility.accessToken.getToken());
-            editor.putBoolean(Utility.PREF_KEY_TWITTER_LOGIN,true);
-            editor.apply();
-            Intent intent = new Intent(context, DialogActivity.class);
-            intent.putExtra("WidgetId",((WebViewActivity)context).getWidgetId());
-            context.startActivity(intent);
-            ((WebViewActivity)context).finish();
-        } catch (IOException e) {
-            e.printStackTrace();
+    protected void onPostExecute(Boolean error) {
+        Intent intent = new Intent(context, DialogActivity.class);
+        intent.putExtra("WidgetId", ((WebViewActivity) context).getWidgetId());
+        intent.putExtra("error",error);
+        if(!error) {
+            Countries countries = new Countries(Utility.countryList);
+            try {
+                FileOutputStream fileOutput = context.openFileOutput("Locations", Context.MODE_PRIVATE);
+                ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+                objectOutput.writeObject(countries);
+                objectOutput.close();
+                fileOutput.close();
+                SharedPreferences.Editor editor = Utility.getSharedPreferences(context).edit();
+                editor.putString(Utility.PREF_KEY_OAUTH_SECRET, Utility.accessToken.getTokenSecret());
+                editor.putString(Utility.PREF_KEY_OAUTH_TOKEN, Utility.accessToken.getToken());
+                editor.putBoolean(Utility.PREF_KEY_TWITTER_LOGIN, true);
+                editor.apply();
+                context.startActivity(intent);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+        ((WebViewActivity) context).finish();
+
     }
 }

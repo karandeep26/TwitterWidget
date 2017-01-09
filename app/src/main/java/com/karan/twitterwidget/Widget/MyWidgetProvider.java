@@ -34,7 +34,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
         int WOEID=-1;
 
         views = new RemoteViews(context.getPackageName(), R.layout.login_widget);
-        if(!Utility.isTwitterLoggedIn(context)){
+        if(Utility.isTwitterLoggedIn(context)){
             views=new RemoteViews(context.getPackageName(),R.layout.logged_in_layout);
             views.setOnClickPendingIntent(R.id.more, getPendingSelfIntent(context, "more" + appWidgetId, WOEID,"null"));
         }

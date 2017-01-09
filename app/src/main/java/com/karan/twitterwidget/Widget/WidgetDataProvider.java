@@ -45,14 +45,11 @@ class WidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onDataSetChanged() {
-        Log.d("onDataSetChanged called","true");
         if(Utility.dataOfWidget.get(appWidgetId)!=null) {
-            Log.d("Utility data","not null");
             mCollection = new ArrayList<>(Utility.dataOfWidget.get(appWidgetId));
         }
         if(mCollection.size()==0) {
             try {
-                Log.d("Load trends from file", "called");
                 loadTrends();
             } catch (TwitterException e) {
                 e.printStackTrace();

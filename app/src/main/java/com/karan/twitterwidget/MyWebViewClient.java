@@ -1,6 +1,8 @@
 package com.karan.twitterwidget;
 
 import android.net.Uri;
+import android.view.KeyEvent;
+import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.karan.twitterwidget.Activity.WebViewActivity;
@@ -35,4 +37,7 @@ public class MyWebViewClient extends WebViewClient{
         new LoadPlaces(activity).execute();
         return true;
     }
+
+
+
 }

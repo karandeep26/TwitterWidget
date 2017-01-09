@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -34,7 +36,6 @@ public class WebViewActivity extends Activity {
     MyWebViewClient webViewClient;
     AlertDialogManager alert = new AlertDialogManager();
     private int id;
-    Subscription subscription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,12 @@ public class WebViewActivity extends Activity {
         webView = (WebView) findViewById(R.id.webView);
         webViewClient = new MyWebViewClient(this);
         webView.setWebViewClient(webViewClient);
+        webView.setOnKeyListener((v, keyCode, event) -> {
+            if(event.getAction()==KeyEvent.ACTION_DOWN) {
+                onError();
+            }
+            return false;
+        });
         Utility.sharedPreferences = getSharedPreferences("MyPref", 0);
         ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
         if (!cd.isConnectingToInternet()) {
@@ -62,7 +69,6 @@ public class WebViewActivity extends Activity {
                 Utility.requestToken = Utility.getTwitterInstance().getOAuthRequestToken();
             } catch (TwitterException e) {
                 Observable.error(e);
-
                 e.printStackTrace();
             }
             return Observable.just(Utility.requestToken);
@@ -81,7 +87,12 @@ public class WebViewActivity extends Activity {
 
             @Override
             public void onNext(RequestToken requestToken) {
-                webView.loadUrl(requestToken.getAuthenticationURL());
+                if(requestToken.getAuthenticationURL()!=null) {
+                    webView.loadUrl(requestToken.getAuthenticationURL());
+                }
+                else{
+                    onError(new Throwable());
+                }
             }
         });
 
@@ -91,53 +102,7 @@ public class WebViewActivity extends Activity {
     public int getWidgetId() {
         return id;
     }
-
-    @SuppressWarnings("unchecked")
-    public void loadPlaces() {
-        subscription = Utility.countriesObservable().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Subscriber() {
-            @Override
-            public void onCompleted() {
-                SharedPreferences.Editor editor=Utility.getSharedPreferences(WebViewActivity.this).edit();
-                editor.putString(Utility.PREF_KEY_OAUTH_SECRET,Utility.accessToken.getTokenSecret());
-                editor.putString(Utility.PREF_KEY_OAUTH_TOKEN,Utility.accessToken.getToken());
-                editor.putBoolean(Utility.PREF_KEY_TWITTER_LOGIN,true);
-                editor.apply();
-                Intent intent = new Intent(WebViewActivity.this, DialogActivity.class);
-                intent.putExtra("WidgetId", getWidgetId());
-                startActivity(intent);
-                finish();
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                WebViewActivity.this.onError();
-            }
-
-            @Override
-            public void onNext(Object o) {
-                Countries countries = new Countries(Utility.countryList);
-                try {
-                    FileOutputStream fileOutput = WebViewActivity.this.openFileOutput("Locations", Context.MODE_PRIVATE);
-                    ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-                    objectOutput.writeObject(countries);
-                    objectOutput.close();
-                    fileOutput.close();
-                   } catch (IOException e) {
-                    WebViewActivity.this.onError();
-                    e.printStackTrace();
-                }
-
-            }
-        });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-//        subscription.unsubscribe();
-    }
-
-    void onError() {
+    public void onError() {
         Intent intent = new Intent(WebViewActivity.this, MyWidgetProvider.class);
         intent.setAction("Login Screen" + id);
         WebViewActivity.this.sendBroadcast(intent);

@@ -16,7 +16,6 @@
 
         <receiver
             android:name="com.karan.twitterwidget.Widget.MyWidgetProvider"
-            android:icon="@drawable/icon"
             android:label="#Trending">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
