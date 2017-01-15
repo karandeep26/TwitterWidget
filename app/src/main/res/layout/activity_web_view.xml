@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
 
-    tools:context="com.karan.twitterwidget.Activity.WebViewActivity">
+    tools:context="com.karan.twitterwidget.activity.WebViewActivity">
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"

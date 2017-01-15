@@ -1,19 +1,14 @@
 package com.karan.twitterwidget;
 
 import android.net.Uri;
-import android.view.KeyEvent;
-import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.karan.twitterwidget.Activity.WebViewActivity;
-import com.karan.twitterwidget.AsyncTasks.LoadPlaces;
-import com.karan.twitterwidget.Model.Country;
+import com.karan.twitterwidget.activity.WebViewActivity;
+import com.karan.twitterwidget.asyncTasks.LoadPlaces;
+import com.karan.twitterwidget.model.Country;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import twitter4j.Location;
-import twitter4j.ResponseList;
 
 /**
  * Created by stpl on 12/28/2016.

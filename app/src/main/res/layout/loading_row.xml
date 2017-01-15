@@ -1,15 +1,16 @@
 
     <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-        android:text=". . ."
         android:id="@android:id/text1"
-        android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceListItemSmall"
-        android:gravity="center_vertical"
-        android:maxLines="1"
         android:ellipsize="marquee"
+        android:gravity="center_vertical"
         android:marqueeRepeatLimit ="marquee_forever"
+        android:maxLines="1"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:paddingLeft="10dp"
         android:scrollHorizontally="true"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall"/>
+        android:text=". . ."
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textColor="#000" />
 

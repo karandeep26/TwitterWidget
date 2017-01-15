@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#263238"
+    android:background="#fafafa"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#37474F">
+        android:background="#7B1FA2">
 
         <TextView
             android:id="@+id/fact"
@@ -36,21 +36,18 @@
         </TextView>
 
     </RelativeLayout>
-    <FrameLayout
-        android:layout_gravity="center"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:background="#2196F3"
-        android:layout_height="wrap_content">
+
     <Button
-        android:background="?android:attr/selectableItemBackground"
         android:id="@+id/login"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:background="#2196F3"
         android:text="Login"
         android:textColor="#fff"
          />
-    </FrameLayout>
 </RelativeLayout>
 

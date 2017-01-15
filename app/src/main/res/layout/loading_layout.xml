@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:background="#263238"
-
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical">
     <RelativeLayout
-        android:background="#37474F"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="#7B1FA2">
     <TextView
-        android:paddingLeft="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:id="@+id/fact" android:layout_width="wrap_content"
-        android:text="#Trending"
-        android:maxLines="1"
+        android:id="@+id/fact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
         android:ellipsize="marquee"
-        android:marqueeRepeatLimit ="marquee_forever"
-        android:scrollHorizontally="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:duplicateParentState="true"
-        android:layout_height="wrap_content">
-    <requestFocus android:focusable="true" android:focusableInTouchMode="true"
-        android:duplicateParentState="true" />
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:maxLines="1"
+        android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:scrollHorizontally="true"
+        android:text="#Trending"
+        android:textColor="#fff"
+        android:textSize="20sp">
+
+        <requestFocus
+            android:duplicateParentState="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
     </TextView>
     </RelativeLayout>
 
@@ -33,10 +37,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <ProgressBar
-        android:layout_gravity="center_vertical|center_horizontal"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar" />
+        android:layout_gravity="center_vertical|center_horizontal" />
 </LinearLayout>
 </LinearLayout>

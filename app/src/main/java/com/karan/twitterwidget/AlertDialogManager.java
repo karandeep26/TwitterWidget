@@ -7,7 +7,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 
-import com.karan.twitterwidget.Activity.WebViewActivity;
+import com.karan.twitterwidget.activity.WebViewActivity;
 
 public class AlertDialogManager {
     /**

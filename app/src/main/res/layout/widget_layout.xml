@@ -3,30 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="#37474F"
+    android:background="#fafafa"
     android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#7B1FA2">
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:duplicateParentState="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/menu"
             android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:marqueeRepeatLimit="marquee_forever"
             android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
+            android:paddingLeft="5dp"
             android:paddingTop="5dp"
             android:scrollHorizontally="true"
+            android:singleLine="true"
             android:text="#Trending"
             android:textColor="#fff"
-            android:textSize="20sp"
-            android:maxLines="1">
+            android:textSize="20sp">
 
             <requestFocus
                 android:duplicateParentState="true"
@@ -34,27 +36,33 @@
                 android:focusableInTouchMode="true" />
         </TextView>
 
+        <LinearLayout
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <ImageButton
+                android:id="@+id/refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:paddingBottom="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="5dp"
+                android:src="@drawable/ic_refresh_white_24dp" />
         <ImageButton
             android:id="@+id/more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:background="?android:selectableItemBackground"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"
             android:paddingBottom="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
             android:src="@drawable/ic_settings_white_24dp" />
 
-        <ImageButton
-            android:id="@+id/refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toLeftOf="@id/more"
-            android:background="#37474F"
-            android:paddingBottom="5dp"
-            android:paddingRight="5dp"
-            android:paddingTop="5dp"
-            android:src="@drawable/ic_refresh_white_24dp" />
+
+        </LinearLayout>
 
 
     </RelativeLayout>
@@ -62,13 +70,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#263238"
         android:orientation="vertical">
 
         <ListView
             android:id="@+id/widget_list"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:divider="@color/colorDivider"
+            android:dividerHeight="1dp" />
     </LinearLayout>
 
 </LinearLayout>
