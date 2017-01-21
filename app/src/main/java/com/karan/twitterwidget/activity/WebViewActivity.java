@@ -70,9 +70,7 @@ public class WebViewActivity extends Activity {
 
             @Override
             public void onError(Throwable e) {
-
                 WebViewActivity.this.onError();
-
             }
 
             @Override
