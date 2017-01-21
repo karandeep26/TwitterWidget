@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.karan.twitterwidget.Utility;
 import com.karan.twitterwidget.activity.DialogActivity;

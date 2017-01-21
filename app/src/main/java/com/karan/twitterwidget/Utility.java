@@ -20,51 +20,48 @@ import twitter4j.conf.ConfigurationBuilder;
  */
 
 public class Utility {
-    static public String PREF_KEY_OAUTH_TOKEN="oauth_token";
+    static public String PREF_KEY_OAUTH_TOKEN = "oauth_token";
     static public String PREF_KEY_TWITTER_LOGIN = "isTwitterLogedIn";
     static public String PREF_KEY_OAUTH_SECRET = "oauth_token_secret";
     static public Twitter twitter;
     static public RequestToken requestToken;
     static public AccessToken accessToken;
     static public String oauthVerifier;
-    static public HashMap<Integer,ArrayList<String>> dataOfWidget = new HashMap<>();
-    static public ArrayList<Country> countryList=new ArrayList<>();
+    static public HashMap<Integer, ArrayList<String>> dataOfWidget = new HashMap<>();
+    static public ArrayList<Country> countryList = new ArrayList<>();
     static public SharedPreferences sharedPreferences;
     private static String Consumer_KEY = "0MGmT3JDbhR3bnG3kkL129zrZ";
     private static String Consumer_Secret = "FCgwYIIfcFsmqztC4WuwXmNToTL3nEqIeNQfILqRjV0KWj4W4c";
     private static ConfigurationBuilder configurationBuilder = new ConfigurationBuilder();
     static private Configuration configuration;
 
-    static private Configuration buildConfiguration()
-    {
-        if(configuration==null)
-        {
+    static private Configuration buildConfiguration() {
+        if (configuration == null) {
             configurationBuilder.setOAuthConsumerKey(Utility.Consumer_KEY);
             configurationBuilder.setOAuthConsumerSecret(Utility.Consumer_Secret);
-            configuration= configurationBuilder.build();
+            configuration = configurationBuilder.build();
         }
         return configuration;
 
 
     }
-    static public Twitter getTwitterInstance()
-    {
-        if(twitter==null)
-        {
-            twitter= new TwitterFactory(buildConfiguration()).getInstance();
+
+    static public Twitter getTwitterInstance() {
+        if (twitter == null) {
+            twitter = new TwitterFactory(buildConfiguration()).getInstance();
 
         }
 
-            return twitter;
+        return twitter;
     }
-    static public boolean isTwitterLoggedIn(Context context)
-    {
 
-        return getSharedPreferences(context).getBoolean(PREF_KEY_TWITTER_LOGIN,false);
+    static public boolean isTwitterLoggedIn(Context context) {
+
+        return getSharedPreferences(context).getBoolean(PREF_KEY_TWITTER_LOGIN, false);
     }
-    static public SharedPreferences getSharedPreferences(Context context)
-    {
-        sharedPreferences=context.getSharedPreferences("MyPref",0);
+
+    static public SharedPreferences getSharedPreferences(Context context) {
+        sharedPreferences = context.getSharedPreferences("MyPref", 0);
         return sharedPreferences;
     }
 

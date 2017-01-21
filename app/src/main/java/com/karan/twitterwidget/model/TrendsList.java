@@ -8,11 +8,13 @@ import java.util.ArrayList;
  */
 
 public class TrendsList implements Serializable {
-    ArrayList<String> list ;
-    public TrendsList(ArrayList<String> list){
-        this.list=new ArrayList<>(list);
+    ArrayList<String> list;
+
+    public TrendsList(ArrayList<String> list) {
+        this.list = new ArrayList<>(list);
     }
-    public ArrayList<String> getList(){
+
+    public ArrayList<String> getList() {
         return list;
     }
 }
