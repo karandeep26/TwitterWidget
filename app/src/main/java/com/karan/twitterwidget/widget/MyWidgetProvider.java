@@ -121,7 +121,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
 
     private void onLogin(ConnectionDetector connectionDetector, String action, Context context, int WOEID) {
         if (!connectionDetector.isConnectingToInternet()) {
-            Toast.makeText(context, "not connection to Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show();
             return;
         }
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
@@ -145,7 +145,6 @@ public class MyWidgetProvider extends AppWidgetProvider {
         setRemoteAdapter(context, views, widgetID, WOEID, cityName);
             /* Refresh button handling*/
         views.setOnClickPendingIntent(R.id.refresh, getPendingSelfIntent(context, "refresh" + widgetID, WOEID, cityName));
-        Log.d("REFRESH", "****" + WOEID);
             /* Handle OnClick on ListView Item */
         Intent listViewClickIntent = new Intent(context, MyWidgetProvider.class);
         listViewClickIntent.setAction("on click");
@@ -198,7 +197,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
     private void refreshList(ConnectionDetector connectionDetector, Context context, String action, int WOEID, String cityName) {
         widgetID = Integer.parseInt(action.replaceAll("[^0-9]", ""));
         if (!connectionDetector.isConnectingToInternet()) {
-            Toast.makeText(context, "Not connected to Internet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "No Internet Connection", Toast.LENGTH_SHORT).show();
             return;
         }
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.loading_layout);

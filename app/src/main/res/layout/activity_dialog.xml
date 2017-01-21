@@ -6,11 +6,13 @@
     android:layout_height="match_parent"
     android:background="#fafafa"
     tools:context="com.karan.twitterwidget.activity.DialogActivity">
+
     <LinearLayout
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#7B1FA2">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,60 +26,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/title">
-    <TextView
-        android:id="@+id/country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:padding="10dp"
-        android:text="Select Country"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-        android:textColor="#000" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/country"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:background="@color/colorDivider" />
-
-    <Spinner
-        android:id="@+id/country_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/country"
-        android:layout_marginTop="2dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp" />
-
-        <TextView
-            android:id="@+id/city"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/country_spinner"
-            android:layout_marginLeft="5dp"
-            android:padding="10dp"
-            android:text="Select city"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
-            android:textColor="#000" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/city"
-            android:layout_marginLeft="1dp"
-            android:layout_marginRight="1dp"
-            android:background="@color/colorDivider" />
 
         <Spinner
-        android:id="@+id/city_spinner"
-        android:layout_width="match_parent"
+            android:id="@+id/country_spinner"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/city"
             android:layout_marginTop="2dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp" />
+        <Spinner
+            android:layout_below="@id/country_spinner"
+            android:id="@+id/city_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
         <Button
             android:id="@+id/done"
             style="@style/Widget.AppCompat.Button.Colored"
@@ -85,10 +51,10 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/city_spinner"
             android:layout_centerInParent="true"
-            android:background="#2196F3"
+            android:background="@drawable/button_selector"
             android:text="Done"
             android:textColor="#fff"
             android:theme="@style/Base.ThemeOverlay.AppCompat" />
-</RelativeLayout>
+    </RelativeLayout>
 
 </RelativeLayout>

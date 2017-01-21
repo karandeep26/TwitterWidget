@@ -41,7 +41,6 @@ public class LoadPlaces extends AsyncTask<Void, Void, Boolean> {
         try {
             accessToken = new AccessToken(requestToken.getToken(), requestToken.getTokenSecret());
             accessToken = Utility.getTwitterInstance().getOAuthAccessToken(requestToken, Utility.oauthVerifier);
-            Log.d("Access token", accessToken.getToken());
             Utility.getTwitterInstance().setOAuthAccessToken(accessToken);
             ResponseList<Location> locationResponseList = Utility.getTwitterInstance().getAvailableTrends();
             for (Location location : locationResponseList) {

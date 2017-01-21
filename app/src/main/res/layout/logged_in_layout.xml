@@ -44,7 +44,7 @@
         android:layout_gravity="center"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:text="Please Select A Location "
+        android:text="Select A Location "
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
         android:textColor="#000"
         android:textSize="12sp" />

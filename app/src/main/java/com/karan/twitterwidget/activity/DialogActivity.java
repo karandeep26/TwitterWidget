@@ -2,12 +2,15 @@ package com.karan.twitterwidget.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.karan.twitterwidget.ConnectionDetector;
@@ -46,15 +49,11 @@ public class DialogActivity extends Activity {
                 (int) (getResources().getDisplayMetrics().heightPixels * 0.8));
         cd = new ConnectionDetector(getApplicationContext());
         Button button = (Button) findViewById(R.id.done);
+        button.setEnabled(false);
         button.setOnClickListener(v -> {
             if (!cd.isConnectingToInternet()) {
-                Toast.makeText(this, "No Connection", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
                 finish();
-                return;
-            } else if (cityNames.size() > 1 && citySpinner.getSelectedItemPosition() == 0) {
-                Toast.makeText(this, "Please select city", Toast.LENGTH_SHORT).show();
-            } else if (countrySpinner.getSelectedItemPosition() == 0) {
-                Toast.makeText(this, "Please select country", Toast.LENGTH_SHORT).show();
             } else {
                 if (loadTrends == null) {
                     loadTrends = new LoadTrends(DialogActivity.this, getWoeid(), getWidgetId(), getName());
@@ -73,9 +72,9 @@ public class DialogActivity extends Activity {
         }
         cityNames.add("ss");
         final ArrayAdapter<String> countryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, countryNames);
-        countrySpinner.setAdapter(new NothingSelectedSpinnerAdapter(countryAdapter, R.layout.spinner_nothing_selected, this));
+        countrySpinner.setAdapter(new NothingSelectedSpinnerAdapter(countryAdapter, R.layout.spinner_nothing_selected_1, this));
         cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, cityNames);
-        citySpinner.setAdapter(new NothingSelectedSpinnerAdapter(cityAdapter, R.layout.spinner_nothing_selected, this));
+        citySpinner.setAdapter(new NothingSelectedSpinnerAdapter(cityAdapter, R.layout.spinner_nothing_selected_2, this));
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -89,15 +88,16 @@ public class DialogActivity extends Activity {
                             cityNames.add(city.getCityName());
                         }
                     }
+                    citySpinner.setSelection(0);
                     if (cityNames.size() > 0) {
-                        citySpinner.setSelection(0);
+
                         citySpinner.setEnabled(true);
                         citySpinner.performClick();
-                    } else {
-                        cityNames.add("DUMMY");
-                        citySpinner.setSelection(0);
-                        citySpinner.setEnabled(false);
 
+                    } else {
+                        button.setEnabled(true);
+                        cityNames.add("DUMMY");
+                        citySpinner.setEnabled(false);
                     }
                 } else {
                     citySpinner.setEnabled(false);
@@ -116,22 +116,27 @@ public class DialogActivity extends Activity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 cityId = position - 1;
+                if (((TextView) view).getText().toString().equalsIgnoreCase("all")) {
+                    button.setEnabled(true);
+                }
                 if (cityId > 0) {
                     woeid = getWoeid();
+                    button.setEnabled(true);
                 }
+
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
 
     }
 
     public int getWoeid() {
-        if (Utility.countryList.get(countryId).getCities() == null || Utility.countryList.get(countryId).getCities().
-                get(cityId).getWoeid() == -1) {
+        if (Utility.countryList.get(countryId).getCities() == null || Utility.countryList.
+                get(countryId).getCities().get(cityId).getWoeid() == -1) {
             return Utility.countryList.get(countryId).getWoeid();
         }
         return Utility.countryList.get(countryId).getCities().get(cityId).getWoeid();

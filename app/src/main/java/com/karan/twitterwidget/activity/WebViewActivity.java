@@ -33,7 +33,6 @@ public class WebViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
         id = getIntent().getIntExtra("WidgetId", -1);
-        Log.d("WebView-Id", id + "");
         webView = (WebView) findViewById(R.id.webView);
         webViewClient = new MyWebViewClient(this);
         webView.setWebViewClient(webViewClient);

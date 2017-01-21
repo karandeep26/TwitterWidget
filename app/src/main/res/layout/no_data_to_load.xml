@@ -66,7 +66,7 @@
             android:layout_gravity="center"
             android:layout_marginLeft="4dp"
             android:layout_marginRight="4dp"
-            android:text="Please connect to internet &amp; "
+            android:text="Connect to internet &amp; "
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Subhead"
             android:textColor="#000"
             android:textSize="12sp" />

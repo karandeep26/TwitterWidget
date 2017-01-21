@@ -30,9 +30,7 @@ class WidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     WidgetDataProvider(Context context, Intent intent) {
         appWidgetId = Integer.valueOf(intent.getData().getSchemeSpecificPart());
-        Log.d("Constructor", "Called");
         if (Utility.dataOfWidget.get(appWidgetId) != null) {
-            Log.d("Utility data", "not null");
             mCollection = new ArrayList<>(Utility.dataOfWidget.get(appWidgetId));
         }
         mContext = context;
