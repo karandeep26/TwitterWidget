@@ -88,7 +88,7 @@ public class DialogActivity extends Activity {
                     }
                     citySpinner.setSelection(0);
                     if (cityNames.size() > 0) {
-
+                        button.setEnabled(false);
                         citySpinner.setEnabled(true);
                         citySpinner.performClick();
 
@@ -99,6 +99,7 @@ public class DialogActivity extends Activity {
                     }
                 } else {
                     citySpinner.setEnabled(false);
+                    button.setEnabled(false);
                 }
 
             }
