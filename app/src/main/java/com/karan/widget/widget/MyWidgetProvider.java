@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.widget;
+package com.karan.widget.widget;
 
 
 import android.annotation.TargetApi;
@@ -13,13 +13,13 @@ import android.support.annotation.NonNull;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.karan.twitterwidget.ConnectionDetector;
-import com.karan.twitterwidget.R;
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.activity.DialogActivity;
-import com.karan.twitterwidget.activity.WebViewActivity;
-import com.karan.twitterwidget.asyncTasks.LoadTrends;
-import com.karan.twitterwidget.model.Countries;
+import com.karan.widget.ConnectionDetector;
+import com.karan.widget.R;
+import com.karan.widget.Utility;
+import com.karan.widget.activity.DialogActivity;
+import com.karan.widget.activity.WebViewActivity;
+import com.karan.widget.asyncTasks.LoadTrends;
+import com.karan.widget.model.Countries;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

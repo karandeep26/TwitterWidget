@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.widget;
+package com.karan.widget.widget;
 
 /**
  * Created by stpl on 12/27/2016.
@@ -10,9 +10,9 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
-import com.karan.twitterwidget.R;
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.model.TrendsList;
+import com.karan.widget.R;
+import com.karan.widget.Utility;
+import com.karan.widget.model.TrendsList;
 
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;

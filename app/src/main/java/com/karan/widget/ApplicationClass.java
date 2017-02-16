@@ -1,4 +1,4 @@
-package com.karan.twitterwidget;
+package com.karan.widget;
 
 import android.app.Application;
 

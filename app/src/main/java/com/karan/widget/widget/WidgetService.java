@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.widget;
+package com.karan.widget.widget;
 
 /**
  * Created by stpl on 12/27/2016.

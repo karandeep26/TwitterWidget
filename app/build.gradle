@@ -3,21 +3,28 @@ apply plugin: 'me.tatarka.retrolambda'
 
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'mykey'
+            keyPassword '123456789'
+            storePassword '123'
+            storeFile file('/home')
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "23.0.3"
     defaultConfig {
-        applicationId "com.karan.twitterwidget"
+        applicationId "com.karan.widget"
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
-        release {
-            minifyEnabled false
-            multiDexEnabled true
+        debug {
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -32,7 +39,6 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'io.reactivex:rxandroid:1.2.1'
     compile 'io.reactivex:rxjava:1.1.6'

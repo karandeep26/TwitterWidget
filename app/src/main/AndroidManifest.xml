@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.karan.twitterwidget">
+    package="com.karan.widget">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission
-        android:name="android.permission.MANAGE_USB"
-        android:protectionLevel="signature" />
     <application
         android:name=".ApplicationClass"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
         <receiver
-            android:name="com.karan.twitterwidget.widget.MyWidgetProvider"
-            android:icon="@drawable/icon"
+            android:name=".widget.MyWidgetProvider"
+            android:icon="@mipmap/preview"
             android:label="#Trending">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -29,14 +26,14 @@
         </receiver>
 
         <service
-            android:name="com.karan.twitterwidget.widget.WidgetService"
+            android:name=".widget.WidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name="com.karan.twitterwidget.activity.WebViewActivity"
+            android:name=".activity.WebViewActivity"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar.MinWidth" />
         <activity
-            android:name="com.karan.twitterwidget.activity.DialogActivity"
+            android:name=".activity.DialogActivity"
             android:theme="@android:style/Theme.Holo.Light.Dialog.NoActionBar.MinWidth">
 
         </activity>

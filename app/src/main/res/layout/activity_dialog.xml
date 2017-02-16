@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fafafa"
-    tools:context="com.karan.twitterwidget.activity.DialogActivity">
+    tools:context="com.karan.widget.activity.DialogActivity">
 
     <LinearLayout
         android:id="@+id/title"

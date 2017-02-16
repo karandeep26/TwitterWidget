@@ -1,13 +1,13 @@
-package com.karan.twitterwidget.asyncTasks;
+package com.karan.widget.asyncTasks;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.activity.DialogActivity;
-import com.karan.twitterwidget.model.TrendsList;
-import com.karan.twitterwidget.widget.MyWidgetProvider;
+import com.karan.widget.Utility;
+import com.karan.widget.activity.DialogActivity;
+import com.karan.widget.model.TrendsList;
+import com.karan.widget.widget.MyWidgetProvider;
 
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;

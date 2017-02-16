@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.activity;
+package com.karan.widget.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,12 +7,12 @@ import android.view.KeyEvent;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import com.karan.twitterwidget.AlertDialogManager;
-import com.karan.twitterwidget.ConnectionDetector;
-import com.karan.twitterwidget.MyWebViewClient;
-import com.karan.twitterwidget.R;
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.widget.MyWidgetProvider;
+import com.karan.widget.AlertDialogManager;
+import com.karan.widget.ConnectionDetector;
+import com.karan.widget.MyWebViewClient;
+import com.karan.widget.R;
+import com.karan.widget.Utility;
+import com.karan.widget.widget.MyWidgetProvider;
 
 import rx.Observable;
 import rx.Subscriber;

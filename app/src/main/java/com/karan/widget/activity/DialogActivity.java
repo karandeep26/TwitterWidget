@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.activity;
+package com.karan.widget.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,13 +11,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.karan.twitterwidget.ConnectionDetector;
-import com.karan.twitterwidget.NothingSelectedSpinnerAdapter;
-import com.karan.twitterwidget.R;
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.asyncTasks.LoadTrends;
-import com.karan.twitterwidget.model.Country;
-import com.karan.twitterwidget.widget.MyWidgetProvider;
+import com.karan.widget.ConnectionDetector;
+import com.karan.widget.NothingSelectedSpinnerAdapter;
+import com.karan.widget.R;
+import com.karan.widget.Utility;
+import com.karan.widget.asyncTasks.LoadTrends;
+import com.karan.widget.model.Country;
+import com.karan.widget.widget.MyWidgetProvider;
 
 import java.util.ArrayList;
 

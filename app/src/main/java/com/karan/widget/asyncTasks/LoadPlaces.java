@@ -1,15 +1,15 @@
-package com.karan.twitterwidget.asyncTasks;
+package com.karan.widget.asyncTasks;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 
-import com.karan.twitterwidget.Utility;
-import com.karan.twitterwidget.activity.DialogActivity;
-import com.karan.twitterwidget.activity.WebViewActivity;
-import com.karan.twitterwidget.model.Countries;
-import com.karan.twitterwidget.model.Country;
+import com.karan.widget.Utility;
+import com.karan.widget.activity.DialogActivity;
+import com.karan.widget.activity.WebViewActivity;
+import com.karan.widget.model.Countries;
+import com.karan.widget.model.Country;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,8 +22,8 @@ import twitter4j.ResponseList;
 import twitter4j.TwitterException;
 import twitter4j.auth.AccessToken;
 
-import static com.karan.twitterwidget.Utility.accessToken;
-import static com.karan.twitterwidget.Utility.requestToken;
+import static com.karan.widget.Utility.accessToken;
+import static com.karan.widget.Utility.requestToken;
 
 
 public class LoadPlaces extends AsyncTask<Void, Void, Boolean> {

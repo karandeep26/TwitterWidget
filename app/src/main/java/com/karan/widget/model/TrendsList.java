@@ -1,4 +1,4 @@
-package com.karan.twitterwidget.model;
+package com.karan.widget.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

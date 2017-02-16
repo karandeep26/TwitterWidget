@@ -1,4 +1,4 @@
-package com.karan.twitterwidget;
+package com.karan.widget;
 
 /**
  * Created by stpl on 12/30/2016.
@@ -6,9 +6,8 @@ package com.karan.twitterwidget;
 
 import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 
-import com.karan.twitterwidget.activity.WebViewActivity;
+import com.karan.widget.activity.WebViewActivity;
 
 public class AlertDialogManager {
     /**
@@ -35,10 +34,8 @@ public class AlertDialogManager {
 //            alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
 
             // Setting OK Button
-            alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    ((WebViewActivity) context).finish();
-                }
+            alertDialog.setButton("OK", (dialog, which) -> {
+                ((WebViewActivity) context).finish();
             });
 
         // Showing Alert Message

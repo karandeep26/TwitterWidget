@@ -1,9 +1,9 @@
-package com.karan.twitterwidget;
+package com.karan.widget;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.karan.twitterwidget.model.Country;
+import com.karan.widget.model.Country;
 
 import java.util.ArrayList;
 import java.util.HashMap;

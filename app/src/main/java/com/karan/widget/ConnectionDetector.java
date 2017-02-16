@@ -1,4 +1,4 @@
-package com.karan.twitterwidget;
+package com.karan.widget;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

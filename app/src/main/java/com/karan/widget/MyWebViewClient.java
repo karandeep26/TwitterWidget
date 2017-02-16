@@ -1,11 +1,11 @@
-package com.karan.twitterwidget;
+package com.karan.widget;
 
 import android.net.Uri;
 import android.webkit.WebViewClient;
 
-import com.karan.twitterwidget.activity.WebViewActivity;
-import com.karan.twitterwidget.asyncTasks.LoadPlaces;
-import com.karan.twitterwidget.model.Country;
+import com.karan.widget.activity.WebViewActivity;
+import com.karan.widget.asyncTasks.LoadPlaces;
+import com.karan.widget.model.Country;
 
 import java.util.ArrayList;
 import java.util.HashMap;
